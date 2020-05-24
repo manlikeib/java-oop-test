@@ -25,4 +25,12 @@ public class Musician {
     public void setInstrument(Instrument instrument) {
         this.instrument = instrument;
     }
+
+    @Override
+    public String toString() {
+        return "Musician{" +
+                "name='" + name + '\'' +
+                ", instrument=" + instrument +
+                '}';
+    }
 }

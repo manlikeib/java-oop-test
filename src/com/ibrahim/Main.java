@@ -6,5 +6,6 @@ public class Main {
         // Testing the inheritance between base and sub classes
         Banjo banjo = new Banjo("HP",26,0.8);
         System.out.println(banjo.getClass().getSimpleName());
+        System.out.println(banjo);
     }
 }
