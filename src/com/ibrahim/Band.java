@@ -2,6 +2,7 @@ package com.ibrahim;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Band {
 
@@ -55,12 +56,12 @@ public class Band {
     }
 
     // method to check if Musician is on the list
-    public boolean musicianAlreadyAdded(Musician musician) {
+    private boolean musicianAlreadyAdded(Musician musician) {
         return musicians.contains(musician);
     }
 
     // method to get the index of the musician on the list
-    public int getPositionOfMusician(Musician musician) {
+    private int getPositionOfMusician(Musician musician) {
         if (!musicianAlreadyAdded(musician)) {
             return -1;
         }
@@ -68,7 +69,7 @@ public class Band {
     }
 
     // method to check if there's a musician with the instrument in the band
-    public boolean instrumentAlreadyAdded(Musician musician) {
+    private boolean instrumentAlreadyAdded(Musician musician) {
         for (Musician m : musicians) {
             if (m.getInstrument() == musician.getInstrument()) {
                 return true;
@@ -76,4 +77,12 @@ public class Band {
         };
         return false;
     }
+
+    // method to remove a random musician from the band
+    public void removeRandomMusician() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(musicians.size());
+        removeMusician(randomIndex);
+    }
+
 }
