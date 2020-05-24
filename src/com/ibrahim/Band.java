@@ -16,6 +16,9 @@ public class Band {
         this.musicians = new ArrayList<>();
     }
 
+    public String getName() {
+        return name;
+    }
 
     public List<Musician> getMusicians() {
         return musicians;
@@ -24,13 +27,14 @@ public class Band {
     @Override
     public String toString() {
         return "Band{" +
-                "musicians=" + musicians +
-                '}';
+                "name='" + name + '\'' +
+                ", musicians=" + musicians +
+                '}' + "\n";
     }
 
     // method to add Musician to the band
     public boolean addMusician(Musician musician) {
-        if (!musicianAlreadyAdded(musician)) {
+        if (musicianAlreadyAdded(musician)) {
             System.out.println("This user already exists on this list");
             return false;
         }
@@ -81,11 +85,17 @@ public class Band {
         return false;
     }
 
-    // method to remove a random musician from the band
-    public void removeRandomMusician() {
+    // method to select random musician from the band
+    private Musician pickRandomMusician() {
         Random random = new Random();
-        int randomIndex = random.nextInt(musicians.size());
-        removeMusician(randomIndex);
+        int randomIndex = random.nextInt(this.getMusicians().size());
+        return this.musicians.get(randomIndex);
+    }
+
+    public Musician removeRandomMusician() {
+        Musician toBeRemoved = pickRandomMusician();
+        removeMusician(toBeRemoved);
+        return toBeRemoved;
     }
 
 }
