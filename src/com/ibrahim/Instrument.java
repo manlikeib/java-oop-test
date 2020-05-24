@@ -15,4 +15,11 @@ public class Instrument {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
+
+    @Override
+    public String toString() {
+        return "Instrument{" +
+                "manufacturer='" + manufacturer + '\'' +
+                '}';
+    }
 }

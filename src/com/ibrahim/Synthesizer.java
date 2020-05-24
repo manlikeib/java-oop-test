@@ -26,4 +26,13 @@ public class Synthesizer extends Instrument {
     public void setHasLED(boolean hasLED) {
         this.hasLED = hasLED;
     }
+
+    @Override
+    public String toString() {
+        return "Synthesizer{" +
+                "manufacturer='" + super.getManufacturer() + '\'' +
+                "numberOfKeys=" + numberOfKeys +
+                ", hasLED=" + hasLED +
+                '}';
+    }
 }

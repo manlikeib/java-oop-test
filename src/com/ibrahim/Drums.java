@@ -16,4 +16,12 @@ public class Drums extends Instrument {
     public void setHihat(boolean hihat) {
         this.hihat = hihat;
     }
+
+    @Override
+    public String toString() {
+        return "Drums{" +
+                "manufacturer='" + super.getManufacturer() + '\'' +
+                "hihat=" + hihat +
+                '}';
+    }
 }

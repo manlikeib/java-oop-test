@@ -26,4 +26,13 @@ public class Piano extends Instrument{
     public void setAcoustic(boolean acoustic) {
         isAcoustic = acoustic;
     }
+
+    @Override
+    public String toString() {
+        return "Piano{" +
+                "manufacturer='" + super.getManufacturer() + '\'' +
+                "numberOfKeys=" + numberOfKeys +
+                ", isAcoustic=" + isAcoustic +
+                '}';
+    }
 }

@@ -26,4 +26,13 @@ public class Guitar extends Instrument {
     public void setStringSize(double stringSize) {
         this.stringSize = stringSize;
     }
+
+    @Override
+    public String toString() {
+        return "Guitar{" +
+                "manufacturer='" + super.getManufacturer() + '\'' +
+                "numberOfStrings=" + numberOfStrings +
+                ", stringSize=" + stringSize +
+                '}';
+    }
 }
