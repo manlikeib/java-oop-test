@@ -28,7 +28,7 @@ public class Band {
     public String toString() {
         return "Band{" +
                 "name='" + name + '\'' +
-                ", musicians=" + musicians +
+                ", Musicians=" + musicians +
                 '}' + "\n";
     }
 
