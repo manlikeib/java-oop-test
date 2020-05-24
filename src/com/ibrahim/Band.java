@@ -78,8 +78,8 @@ public class Band {
     // method to check if there's a musician with the instrument in the band
     private boolean instrumentAlreadyAdded(Musician musician) {
         for (Musician m : musicians) {
-            if (m.getInstrument() == musician.getInstrument()) {
-                return true;
+            if (m.getInstrument().getClass().getSimpleName().equals(musician.getInstrument().getClass().getSimpleName())) {
+                return true; // this is true if the Instruments are of the same class.
             }
         };
         return false;
