@@ -123,6 +123,8 @@ public class Main {
         for (Musician freeMusician : freeMusicians) {
             int randomBond = random.nextInt(bands.size());
             bands.get(randomBond).addMusician(freeMusician);
+            System.out.println("Musician " + freeMusician.getName() + " joined " +
+                    bands.get(randomBond). getName());
             //freeMusicians.remove(freeMusician);
         }  freeMusicians.removeAll(freeMusicians);
     }
