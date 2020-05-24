@@ -27,8 +27,8 @@ public class Band {
     @Override
     public String toString() {
         return "Band{" +
-                "name='" + name + '\'' +
-                ", Musicians=" + musicians +
+                "Name='" + name + '\'' + "\n" +
+                " Musicians= \n" + musicians +
                 '}' + "\n";
     }
 

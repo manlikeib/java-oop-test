@@ -32,7 +32,7 @@ public class Guitar extends Instrument {
         return "Guitar{" +
                 "manufacturer='" + super.getManufacturer() + '\'' +
                 "numberOfStrings=" + numberOfStrings +
-                ", stringSize=" + stringSize +
+                ", stringSize=" + stringSize + "mm" +
                 '}';
     }
 }

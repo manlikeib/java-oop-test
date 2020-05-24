@@ -11,7 +11,7 @@ public class Banjo extends Guitar{
         return "Banjo{" +
                 "manufacturer='" + super.getManufacturer() + '\'' +
                 "numberOfStrings=" + super.getNumberOfStrings() +
-                ", stringSize=" + super.getStringSize() +
+                ", stringSize=" + super.getStringSize() + "mm" +
                 '}';
     }
 }
