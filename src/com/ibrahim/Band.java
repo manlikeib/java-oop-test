@@ -6,10 +6,13 @@ import java.util.Random;
 
 public class Band {
 
+    private String name;
     private List<Musician> musicians;
 
     // new arraylist should be created when initializing a band object
-    public Band() {
+
+    public Band(String name) {
+        this.name = name;
         this.musicians = new ArrayList<>();
     }
 
