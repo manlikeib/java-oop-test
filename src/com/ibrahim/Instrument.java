@@ -1,6 +1,6 @@
 package com.ibrahim;
 
-public class Instrument {
+public abstract class Instrument {
 
     private String manufacturer;
 
