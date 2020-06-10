@@ -1,14 +1,12 @@
-package com.ibrahim;
+package com.ibrahim.ooptest.instrument;
 
-public class Piano extends Instrument{
+public abstract class keyboardInstrument extends Instrument {
 
     private int numberOfKeys;
-    private boolean isAcoustic;
 
-    public Piano(String manufacturer, int numberOfKeys, boolean isAcoustic) {
+    public keyboardInstrument(String manufacturer, int numberOfKeys) {
         super(manufacturer);
         this.numberOfKeys = numberOfKeys;
-        this.isAcoustic = isAcoustic;
     }
 
     public int getNumberOfKeys() {
@@ -19,20 +17,11 @@ public class Piano extends Instrument{
         this.numberOfKeys = numberOfKeys;
     }
 
-    public boolean isAcoustic() {
-        return isAcoustic;
-    }
-
-    public void setAcoustic(boolean acoustic) {
-        isAcoustic = acoustic;
-    }
-
     @Override
     public String toString() {
-        return "Piano{" +
+        return "keyboardInstrument{" +
                 "manufacturer='" + super.getManufacturer() + '\'' +
                 "numberOfKeys=" + numberOfKeys +
-                ", isAcoustic=" + isAcoustic +
                 '}';
     }
 }

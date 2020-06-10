@@ -1,4 +1,4 @@
-package com.ibrahim;
+package com.ibrahim.ooptest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,10 +48,6 @@ public class Band {
 
     // method to remove Musician from the band
     public boolean removeMusician(Musician musician) {
-        if (!musicianAlreadyAdded(musician)) {
-            System.out.println("This user does not exist on this list");
-            return false;
-        }
         musicians.remove(musician);
         return true;
     }
@@ -65,14 +61,6 @@ public class Band {
     // method to check if Musician is on the list
     private boolean musicianAlreadyAdded(Musician musician) {
         return musicians.contains(musician);
-    }
-
-    // method to get the index of the musician on the list
-    private int getPositionOfMusician(Musician musician) {
-        if (!musicianAlreadyAdded(musician)) {
-            return -1;
-        }
-        return musicians.indexOf(musician);
     }
 
     // method to check if there's a musician with the instrument in the band

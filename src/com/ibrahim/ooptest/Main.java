@@ -1,4 +1,6 @@
-package com.ibrahim;
+package com.ibrahim.ooptest;
+
+import com.ibrahim.ooptest.instrument.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,17 +11,12 @@ public class Main {
 
     static List<Band> bands = new ArrayList<>(); // This will store the Band objects
     static List<Musician> freeMusicians = new ArrayList<>(); // This will store musicians not in any band
-    static List<Musician> unableToJoinBand = new ArrayList<>();
     static Random random = new Random();
 
     public static void main(String[] args) {
-
-        // Load initial data
         loadData();
 
-        // The menu will be displayed now
         while(true) {
-            
             displayMenu();
             
             Scanner scanner = new Scanner(System.in);
@@ -47,6 +44,77 @@ public class Main {
         }
     }
 
+    /** This method displays the menu */
+    private static void displayMenu() {
+        System.out.println("################ W E L C O M E #################" +
+                "\n Press 1 for all band information" +
+                "\n Press 2 to play one night" +
+                "\n Press 3 to exit" +
+                "\n PLEASE ENTER A NUMBER: ");
+    }
+
+    private static void listBand() {
+        System.out.println(bands);
+    }
+
+    /** This method deletes random members of the band and adds free musicians. */
+    private static void play() {
+        removeRandomMusician();
+        addFreeMusician();
+    }
+
+    /** This method deletes random members of the band */
+    private static void removeRandomMusician() {
+        for (Band band : bands) {
+            if (band.getMusicians().size() > 0) {
+                Musician removedMusician = band.removeRandomMusician();
+                System.out.println("Musician " + removedMusician.getName() + " left " +
+                        band.getName());
+                freeMusicians.add(removedMusician);
+            }
+        }
+    }
+
+    /** This method tries to add a free musician to an available band
+     * Any musician that fails to get a band at the end of the loop
+     * remains in the tempList which is then copied into freeMusicians
+     * list
+     * */
+    private static void addFreeMusician() {
+
+        ArrayList<Musician> tempList = new ArrayList<>();
+        tempList.addAll(freeMusicians);
+
+        for (Musician freeMusician : freeMusicians) {
+            int randomBond = random.nextInt(bands.size());
+            if (bands.get(randomBond).addMusician(freeMusician)) {
+                System.out.println("Musician " + freeMusician.getName() + " joined " +
+                        bands.get(randomBond).getName());
+                tempList.remove(freeMusician);
+            }
+            else {
+                for (Band band : bands) {
+                    if (band.addMusician(freeMusician)) {
+                        System.out.println("Musician " + freeMusician.getName() + " joined " +
+                                band.getName());
+                        tempList.remove(freeMusician);
+                        break;
+                    }
+                }
+            }
+        }
+        freeMusicians.removeAll(freeMusicians);
+        for (Musician musician : tempList) {
+            freeMusicians.add(musician);
+        }
+        System.out.println("Free musicians: " + freeMusicians);
+    }
+
+    private static void close() {
+        System.exit(0);
+    }
+
+    /** Load initial data */
     private static void loadData() {
         // create the first band
         Band band1 = new Band("Spoke 'n hub");
@@ -91,58 +159,11 @@ public class Main {
         Instrument banjo2 = new Banjo("Spic", 72, 0.7);
         Musician musician7 = new Musician("Ivy Joee", banjo2);
         freeMusicians.add(musician7); // add her to list of free musicians so she can be added to a random band later
-        unableToJoinBand.add(musician7);
 
         // creating my own empty custom band to test option 2
         Band band3 = new Band("Men like IB");
         bands.add(band3);
 
         System.out.println("All data have been entered!");
-    }
-
-    private static void displayMenu() {
-        System.out.println("################ W E L C O M E #################" +
-                "\n Press 1 for all band information" +
-                "\n Press 2 to play one night" +
-                "\n Press 3 to exit" +
-                "\n PLEASE ENTER A NUMBER: ");
-    }
-
-    private static void listBand() {
-        System.out.println(bands);
-    }
-
-    // method to delete random members of the band end add free musicians.
-    private static void play() {
-        for (Band band : bands) {
-            if (band.getMusicians().size() > 0) {
-                Musician removedMusician = band.removeRandomMusician();
-                System.out.println("Musician " + removedMusician.getName() + " left " +
-                        band.getName());
-                freeMusicians.add(removedMusician);
-                unableToJoinBand.add(removedMusician);
-            }
-        }
-
-        // assign all free musicians to available bands
-        for (Musician freeMusician : freeMusicians) {
-            int randomBond = random.nextInt(bands.size());
-
-            if (bands.get(randomBond).addMusician(freeMusician)) {
-                System.out.println("Musician " + freeMusician.getName() + " joined " +
-                        bands.get(randomBond). getName());
-                unableToJoinBand.remove(freeMusician);
-            }
-
-        }
-        freeMusicians.removeAll(freeMusicians);
-        for (Musician musician : unableToJoinBand) {
-            freeMusicians.add(musician);
-        }
-
-    }
-
-    private static void close() {
-        System.exit(0);
     }
 }

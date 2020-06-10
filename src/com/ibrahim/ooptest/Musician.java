@@ -1,4 +1,6 @@
-package com.ibrahim;
+package com.ibrahim.ooptest;
+
+import com.ibrahim.ooptest.instrument.Instrument;
 
 public class Musician {
 

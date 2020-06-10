@@ -1,14 +1,14 @@
-package com.ibrahim;
+package com.ibrahim.ooptest.instrument;
 
-public class Guitar extends StringInstrument {
+public class Banjo extends StringInstrument {
 
-    public Guitar(String manufacturer, int numberOfStrings, double stringSize) {
+    public Banjo(String manufacturer, int numberOfStrings, double stringSize) {
         super(manufacturer, numberOfStrings, stringSize);
     }
 
     @Override
     public String toString() {
-        return "Guitar{" +
+        return "Banjo{" +
                 "manufacturer='" + super.getManufacturer() + '\'' +
                 "numberOfStrings=" + super.getNumberOfStrings() +
                 ", stringSize=" + super.getStringSize() + "mm" +

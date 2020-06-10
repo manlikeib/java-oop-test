@@ -1,6 +1,8 @@
-package com.ibrahim;
+package com.ibrahim.ooptest.instrument;
 
-public class StringInstrument extends Instrument{
+import com.ibrahim.ooptest.instrument.Instrument;
+
+public class StringInstrument extends Instrument {
 
     public StringInstrument(String manufacturer, int numberOfStrings, double stringSize) {
         super(manufacturer);

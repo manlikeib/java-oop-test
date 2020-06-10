@@ -1,4 +1,4 @@
-package com.ibrahim;
+package com.ibrahim.ooptest.instrument;
 
 public abstract class Instrument {
 

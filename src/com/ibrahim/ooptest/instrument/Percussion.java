@@ -1,10 +1,10 @@
-package com.ibrahim;
+package com.ibrahim.ooptest.instrument;
 
-public class Drums extends Instrument {
+public abstract class Percussion extends Instrument {
 
     private boolean hihat;
 
-    public Drums(String manufacturer, boolean hihat) {
+    public Percussion(String manufacturer, boolean hihat) {
         super(manufacturer);
         this.hihat = hihat;
     }
@@ -19,9 +19,10 @@ public class Drums extends Instrument {
 
     @Override
     public String toString() {
-        return "Drums{" +
+        return "Percussion{" +
                 "manufacturer='" + super.getManufacturer() + '\'' +
                 "hihat=" + hihat +
                 '}';
     }
+
 }
