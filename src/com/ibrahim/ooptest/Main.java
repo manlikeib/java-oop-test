@@ -3,22 +3,17 @@ package com.ibrahim.ooptest;
 import com.ibrahim.ooptest.instrument.*;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-
-    static List<Band> bands = new ArrayList<>(); // This will store the Band objects
-    static List<Musician> freeMusicians = new ArrayList<>(); // This will store musicians not in any band
-    static Random random = new Random();
 
     public static void main(String[] args) {
         loadData();
 
         while(true) {
             displayMenu();
-            
+
             Scanner scanner = new Scanner(System.in);
             int option = 0;
             if (scanner.hasNextInt(4)) {
@@ -54,7 +49,7 @@ public class Main {
     }
 
     private static void listBand() {
-        System.out.println(bands);
+        System.out.println(StaticFields.bands);
     }
 
     /** This method deletes random members of the band and adds free musicians. */
@@ -63,14 +58,14 @@ public class Main {
         addFreeMusician();
     }
 
-    /** This method deletes random members of the band */
+    /** This method removes random members of the band */
     private static void removeRandomMusician() {
-        for (Band band : bands) {
+        for (Band band : StaticFields.bands) {
             if (band.getMusicians().size() > 0) {
                 Musician removedMusician = band.removeRandomMusician();
                 System.out.println("Musician " + removedMusician.getName() + " left " +
                         band.getName());
-                freeMusicians.add(removedMusician);
+                StaticFields.freeMusicians.add(removedMusician);
             }
         }
     }
@@ -83,17 +78,19 @@ public class Main {
     private static void addFreeMusician() {
 
         ArrayList<Musician> tempList = new ArrayList<>();
-        tempList.addAll(freeMusicians);
+        tempList.addAll(StaticFields.freeMusicians);
 
-        for (Musician freeMusician : freeMusicians) {
-            int randomBond = random.nextInt(bands.size());
-            if (bands.get(randomBond).addMusician(freeMusician)) {
+        Random random = new Random();
+
+        for (Musician freeMusician : StaticFields.freeMusicians) {
+            int randomBond = random.nextInt(StaticFields.bands.size());
+            if (StaticFields.bands.get(randomBond).addMusician(freeMusician)) {
                 System.out.println("Musician " + freeMusician.getName() + " joined " +
-                        bands.get(randomBond).getName());
+                        StaticFields.bands.get(randomBond).getName());
                 tempList.remove(freeMusician);
             }
             else {
-                for (Band band : bands) {
+                for (Band band : StaticFields.bands) {
                     if (band.addMusician(freeMusician)) {
                         System.out.println("Musician " + freeMusician.getName() + " joined " +
                                 band.getName());
@@ -103,11 +100,11 @@ public class Main {
                 }
             }
         }
-        freeMusicians.removeAll(freeMusicians);
+        StaticFields.freeMusicians.removeAll(StaticFields.freeMusicians);
         for (Musician musician : tempList) {
-            freeMusicians.add(musician);
+            StaticFields.freeMusicians.add(musician);
         }
-        System.out.println("Free musicians: " + freeMusicians);
+        System.out.println("Free musicians: " + StaticFields.freeMusicians);
     }
 
     private static void close() {
@@ -118,11 +115,11 @@ public class Main {
     private static void loadData() {
         // create the first band
         Band band1 = new Band("Spoke 'n hub");
-        bands.add(band1);
+        StaticFields.bands.add(band1);
 
         // create the second band
         Band band2 = new Band("Fleerats");
-        bands.add(band2);
+        StaticFields.bands.add(band2);
 
         // create instrument and musician objects for first band
         Instrument guitar1 = new Guitar("Bender", 5, 0.4);
@@ -158,11 +155,16 @@ public class Main {
         // extra musician
         Instrument banjo2 = new Banjo("Spic", 72, 0.7);
         Musician musician7 = new Musician("Ivy Joee", banjo2);
-        freeMusicians.add(musician7); // add her to list of free musicians so she can be added to a random band later
+        StaticFields.freeMusicians.add(musician7); // add her to list of free musicians so she can be added to a random band later
+
+        Musician musician8 = new Musician("Jacuzzi", new Banjo("Ibile", 45, 0.6));
+        Musician musician9 = new Musician("Spending", new Banjo("Locale", 32, 0.4));
+        StaticFields.freeMusicians.add(musician8);
+        StaticFields.freeMusicians.add(musician9);
 
         // creating my own empty custom band to test option 2
         Band band3 = new Band("Men like IB");
-        bands.add(band3);
+        StaticFields.bands.add(band3);
 
         System.out.println("All data have been entered!");
     }
