@@ -46,18 +46,6 @@ public class Band {
         return true;
     }
 
-    // method to remove Musician from the band
-    public boolean removeMusician(Musician musician) {
-        musicians.remove(musician);
-        return true;
-    }
-
-    // method overloading... Removing musician using index
-    public boolean removeMusician(int index) {
-        musicians.remove(index);
-        return true;
-    }
-
     // method to check if Musician is on the list
     private boolean musicianAlreadyAdded(Musician musician) {
         return musicians.contains(musician);
@@ -67,9 +55,9 @@ public class Band {
     private boolean instrumentAlreadyAdded(Musician musician) {
         for (Musician m : musicians) {
             if (m.getInstrument().getClass().getSimpleName().equals(musician.getInstrument().getClass().getSimpleName())) {
-                return true; // this is true if the Instruments are of the same class.
+                return true;
             }
-        };
+        }
         return false;
     }
 
@@ -82,7 +70,7 @@ public class Band {
 
     public Musician removeRandomMusician() {
         Musician toBeRemoved = pickRandomMusician();
-        removeMusician(toBeRemoved);
+        musicians.remove(toBeRemoved);
         return toBeRemoved;
     }
 
