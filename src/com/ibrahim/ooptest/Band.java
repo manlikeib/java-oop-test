@@ -32,26 +32,16 @@ public class Band {
                 '}' + "\n";
     }
 
-    // method to add Musician to the band
+    /** method to add Musician to the band */
     public boolean addMusician(Musician musician) {
-        if (musicianAlreadyAdded(musician)) {
-            System.out.println("This user already exists on this list");
-            return false;
-        }
         if (instrumentAlreadyAdded(musician)) {
-            System.out.println("There's a musician with this instrument type");
             return false;
         }
         musicians.add(musician);
         return true;
     }
 
-    // method to check if Musician is on the list
-    private boolean musicianAlreadyAdded(Musician musician) {
-        return musicians.contains(musician);
-    }
-
-    // method to check if there's a musician with the instrument in the band
+    /** This methods checks if there's a musician with the instrument in the band */
     private boolean instrumentAlreadyAdded(Musician musician) {
         for (Musician m : musicians) {
             if (m.getInstrument().getClass().getSimpleName().equals(musician.getInstrument().getClass().getSimpleName())) {
@@ -61,7 +51,7 @@ public class Band {
         return false;
     }
 
-    // method to select random musician from the band
+    /** This method selects random musician from the band */
     private Musician pickRandomMusician() {
         Random random = new Random();
         int randomIndex = random.nextInt(this.getMusicians().size());

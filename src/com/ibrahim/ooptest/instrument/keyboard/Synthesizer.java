@@ -1,6 +1,4 @@
-package com.ibrahim.ooptest.instrument;
-
-import com.ibrahim.ooptest.instrument.Instrument;
+package com.ibrahim.ooptest.instrument.keyboard;
 
 public class Synthesizer extends keyboardInstrument {
 

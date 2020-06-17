@@ -1,4 +1,6 @@
-package com.ibrahim.ooptest.instrument;
+package com.ibrahim.ooptest.instrument.percussion;
+
+import com.ibrahim.ooptest.instrument.Instrument;
 
 public abstract class Percussion extends Instrument {
 

@@ -1,4 +1,4 @@
-package com.ibrahim.ooptest.instrument;
+package com.ibrahim.ooptest.instrument.string;
 
 import com.ibrahim.ooptest.instrument.Instrument;
 

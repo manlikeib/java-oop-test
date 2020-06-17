@@ -7,7 +7,7 @@ import java.util.List;
  * The static fields are the list of bands and list of free musicians.
  * This will ensure that there are no static variables in the main class
  * */
-public class StaticFields {
+public class StaticLists {
 
     static List<Band> bands = new ArrayList<>(); // This will store the Band objects
     static List<Musician> freeMusicians = new ArrayList<>();

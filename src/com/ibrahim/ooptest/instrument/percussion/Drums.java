@@ -1,4 +1,4 @@
-package com.ibrahim.ooptest.instrument;
+package com.ibrahim.ooptest.instrument.percussion;
 
 public class Drums extends Percussion {
 

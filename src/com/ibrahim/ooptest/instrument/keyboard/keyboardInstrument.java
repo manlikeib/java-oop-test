@@ -1,4 +1,6 @@
-package com.ibrahim.ooptest.instrument;
+package com.ibrahim.ooptest.instrument.keyboard;
+
+import com.ibrahim.ooptest.instrument.Instrument;
 
 public abstract class keyboardInstrument extends Instrument {
 

@@ -1,4 +1,4 @@
-package com.ibrahim.ooptest.instrument;
+package com.ibrahim.ooptest.instrument.keyboard;
 
 public class Piano extends keyboardInstrument {
 
